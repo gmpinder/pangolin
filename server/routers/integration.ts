@@ -861,6 +861,13 @@ authenticated.get(
 );
 
 authenticated.get(
+    "/users",
+    verifyApiKeyIsRoot,
+    verifyApiKeyHasAction(ActionsEnum.getUser),
+    user.adminListUsers
+)
+
+authenticated.get(
     "/org/:orgId/users",
     verifyApiKeyOrgAccess,
     verifyApiKeyHasAction(ActionsEnum.listUsers),
